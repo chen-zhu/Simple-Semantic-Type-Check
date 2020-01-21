@@ -41,6 +41,10 @@ def test_cases():
 		['If (True, If (2+3 <= 3+2, 1*2, 2+2), 2)', 2, 'Int'],
 		['If (False, If (2+3 <= 3+2, 1*2, 2+2), 3)', 3, 'Int'],
 		['If (False, If (2+3 <= 3+2, 1*2, 2+2), If (6 <= 7, 8*8+9+10, 9+9*2))', 83, 'Int'],
+		#Yeahhhh I donno why.. I just like Sooooooooo many 'If' blocks
+		['If (True, If (True, If (True, If (True, If (True, If (True, If (False, 5, 6), 4), 4), 4), 4), 4), 2)', 6, 'Int'],
+		['If (True, If (True, If (True, If (True, If (True, If (True, If (True, 5, 6), 4), 4), 4), 4), 4), 2)', 5, 'Int'],
+		['If (True, If (False, If (True, If (True, If (True, If (True, If (True, 5, 6), 4), 4), 4), 4), 44), 2)', 44, 'Int'],
 
 		
 		#**********Test Cases With Wrong Type/Semantic [NOT/PARTIAL ASSERTED]**********
@@ -68,6 +72,7 @@ def test_cases():
 		#to the wrong data type. 
 		['672 <= "ABC"', 'XX', 'Incorrect Type Detected.'],
 		['672 <= False', 'XX', 'Incorrect Type Detected.'],
+		['672 <= 673 <= 674', 'XX', 'Incorrect Type Detected.'], #Bool cannot be used for comparing
 
 		#Disobey Type Rules: MUL & REL
 		#The folliwng case should fail both Type and Semantic Check. 
