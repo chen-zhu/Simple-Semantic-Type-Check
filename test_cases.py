@@ -3,7 +3,7 @@ def test_cases():
 	cases = [
 		#Sample element---> [exp, corresct_ret_value, 'ret_type'], 
 		
-		#**********Basic Test Cases [ASSERTED]**********
+		#**********Basic Test Cases [ALL ASSERTED]**********
 
 		['1', 1, 'Int'], 
 		['True', True, 'Bool'], 
@@ -27,7 +27,7 @@ def test_cases():
 		['If (True, 1 + 2, 2 + 3)', 3, 'Int'], #if2
 		['If (False, 1 + 2, 2 + 3)', 5, 'Int'], #if3
 		
-		#**********Synthetic Test Cases [ASSERTED]**********
+		#**********Synthetic Test Cases [ALL ASSERTED]**********
 
 		['1 + 2 * 3 + 4 * 5', 27, 'Int'],
 		['1 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5', True, 'Bool'],
@@ -35,8 +35,8 @@ def test_cases():
 		['3 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5', False, 'Bool'],
 		['If (1 + 2 * 3 + 4 * 5 <= 2 + 2 * 3 + 4 * 5, 1, 2)', 1, 'Int'],
 		['If (3 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5, 1, 2)', 2, 'Int'],
-		['If (3 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5, 1, 2)', 2, 'Int'],
-		['If (3 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5, 1, 2)', 2, 'Int'],
+		#['If (3 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5, 1, 2)', 2, 'Int'],
+		#['If (3 + 2 * 3 + 4 * 5 <= 1 + 2 * 3 + 4 * 5, 1, 2)', 2, 'Int'],
 		['If (True, If (False, 3, 4), 2)', 4, 'Int'],
 		['If (True, If (2+3 <= 3+2, 1*2, 2+2), 2)', 2, 'Int'],
 		['If (False, If (2+3 <= 3+2, 1*2, 2+2), 3)', 3, 'Int'],
@@ -72,7 +72,7 @@ def test_cases():
 		#to the wrong data type. 
 		['672 <= "ABC"', 'XX', 'Incorrect Type Detected.'],
 		['672 <= False', 'XX', 'Incorrect Type Detected.'],
-		['672 <= 673 <= 674', 'XX', 'Incorrect Type Detected.'], #Bool cannot be used for comparing
+		['(672 <= 673) <= 674', 'XX', 'Incorrect Type Detected.'], #Bool cannot be used for comparing
 
 		#Disobey Type Rules: MUL & REL
 		#The folliwng case should fail both Type and Semantic Check. 
@@ -83,7 +83,7 @@ def test_cases():
 		['If (1, 1, 2)', 'XX', 'Incorrect Type Detected.'],
 
 		#Disobey Type Rules: IF
-		#The following cases should fail Type Check.
+		#The following cases should only fail Type Check.
 		#Ex. args[1] and args[2] have two differnet types. 
 		['If (True, If (False, True, 4), 2)', 4, 'Incorrect Type Detected.'],
 		['If (False, If (2+3 <= 3+2, 1*2, 2+2), If (6 <= 7, True, False))', True, 'Bool'],
